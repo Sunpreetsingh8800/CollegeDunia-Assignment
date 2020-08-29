@@ -22,7 +22,7 @@ class Splash extends Component {
     return (
       <SafeAreaView style={styles.container}>
         <View style={styles.innerContainer}>
-          <Text>Welcome to College Dunia weatherx app</Text>
+          <Text>Welcome to College Dunia splash screen</Text>
         </View>
       </SafeAreaView>
     );
