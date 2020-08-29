@@ -22,7 +22,9 @@ class Splash extends Component {
     return (
       <SafeAreaView style={styles.container}>
         <View style={styles.innerContainer}>
-          <Text>Welcome to College Dunia splash screen</Text>
+          <Text style={styles.welcomeText}>Welcome to </Text>
+          <Text style={styles.welcomeText}>College dunia </Text>
+          <Text style={styles.welcomeText}>Assignment </Text>
         </View>
       </SafeAreaView>
     );

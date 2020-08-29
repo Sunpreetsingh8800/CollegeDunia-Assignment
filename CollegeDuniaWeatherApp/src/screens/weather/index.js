@@ -4,7 +4,6 @@ import {styles} from './styles';
 import {weatherOperations} from '../../api/weatherOperations';
 import {ForecastView} from '../../components/forecastView';
 import {LoadingView} from '../../components/LoadingView';
-import {dynamicSize} from '../../utils/dimension.style';
 
 class Weather extends Component {
   constructor(props) {

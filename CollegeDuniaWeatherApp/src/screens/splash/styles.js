@@ -9,11 +9,14 @@ export const styles = StyleSheet.create({
   },
   container: {
     flex: 1,
-    backgroundColor: 'red',
+    backgroundColor: '#e3e3e3',
   },
   dotIcon: {
     width: dynamicSize(200),
     height: dynamicSize(113.8),
     alignContent: 'center',
+  },
+  welcomeText: {
+    fontSize: dynamicSize(32),
   },
 });
