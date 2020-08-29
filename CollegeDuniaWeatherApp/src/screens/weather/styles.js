@@ -11,6 +11,25 @@ export const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#fff',
   },
+  errorContainer: {
+    flex: 1,
+    backgroundColor: '#fff',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  retryText: {
+    borderWidth: 1,
+    borderColor: '#000',
+    paddingHorizontal: dynamicSize(30),
+    paddingVertical: dynamicSize(10),
+    marginTop: dynamicSize(80),
+  },
+  retryTextWrapper: {
+    fontSize: 50,
+    fontWeight: 'normal',
+    marginLeft: dynamicSize(30),
+    marginRight: dynamicSize(100),
+  },
   titleText: {
     fontSize: dynamicSize(38),
   },

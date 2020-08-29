@@ -1,9 +1,10 @@
 import React, {Component, Fragment} from 'react';
-import {View, SafeAreaView, Text} from 'react-native';
+import {View, SafeAreaView, Text, TouchableOpacity} from 'react-native';
 import {styles} from './styles';
 import {weatherOperations} from '../../api/weatherOperations';
 import {ForecastView} from '../../components/forecastView';
 import {LoadingView} from '../../components/LoadingView';
+import {dynamicSize} from '../../utils/dimension.style';
 
 class Weather extends Component {
   constructor(props) {
@@ -23,6 +24,7 @@ class Weather extends Component {
     this.setState({loading: true});
     try {
       const {data} = await weatherOperations.getCurrentWeather();
+      console.log(data, ':::data');
       this.setState({loading: false});
       const currentData = data && data.current;
       const dailyData = data && data.daily.splice(3, 7);
@@ -41,8 +43,15 @@ class Weather extends Component {
       return <LoadingView />;
     } else if (error) {
       return (
-        <View>
-          <Text>Something went wrong at our end</Text>
+        <View style={styles.errorContainer}>
+          <Text style={styles.retryTextWrapper}>
+            Something went wrong at our end
+          </Text>
+          <TouchableOpacity
+            style={styles.retryText}
+            onPress={this.getWeatherData}>
+            <Text style={{fontSize: 16}}>Retry</Text>
+          </TouchableOpacity>
         </View>
       );
     } else {
