@@ -23,7 +23,6 @@ class Weather extends Component {
     this.setState({loading: true});
     try {
       const {data} = await weatherOperations.getCurrentWeather();
-      console.log(data, ':::data');
       this.setState({loading: false});
       const currentData = data && data.current;
       const dailyData = data && data.daily.splice(3, 7);
@@ -32,23 +31,33 @@ class Weather extends Component {
       }
     } catch (error) {
       this.setState({loading: false});
-      console.log(error, '::::error');
+      this.setState({error: true});
     }
   };
 
+  renderView() {
+    const {currentData, dailyData, loading, error} = this.state;
+    if (loading) {
+      return <LoadingView />;
+    } else if (error) {
+      return (
+        <View>
+          <Text>Something went wrong at our end</Text>
+        </View>
+      );
+    } else {
+      return (
+        <Fragment>
+          <TodayWeatherView currentData={currentData} />
+          <ForecastView dailyData={dailyData} />
+        </Fragment>
+      );
+    }
+  }
+
   render() {
-    const {currentData, dailyData, loading} = this.state;
     return (
-      <SafeAreaView style={styles.container}>
-        {loading ? (
-          <LoadingView />
-        ) : (
-          <Fragment>
-            <TodayWeatherView currentData={currentData} />
-            <ForecastView dailyData={dailyData} />
-          </Fragment>
-        )}
-      </SafeAreaView>
+      <SafeAreaView style={styles.container}>{this.renderView()}</SafeAreaView>
     );
   }
 }

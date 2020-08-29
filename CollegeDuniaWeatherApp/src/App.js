@@ -6,6 +6,8 @@ import NetInfo from '@react-native-community/netinfo';
 import {store} from './store';
 import {persistStore} from 'redux-persist';
 import NetworkContext from './utils/networkContext';
+import GetLocation from 'react-native-get-location';
+import {setCurrentPosition} from './actions/actions';
 
 persistStore(store);
 
@@ -20,6 +22,17 @@ class App extends Component {
   }
 
   componentDidMount = async () => {
+    GetLocation.getCurrentPosition({
+      enableHighAccuracy: true,
+      timeout: 15000,
+    })
+      .then((location) => {
+        store.dispatch(setCurrentPosition(location));
+      })
+      .catch((error) => {
+        const {message} = error;
+        console.warn(message);
+      });
     NetInfo.addEventListener((state) => {
       this.setState({
         isInternetReaachable: state.isInternetReachable || false,

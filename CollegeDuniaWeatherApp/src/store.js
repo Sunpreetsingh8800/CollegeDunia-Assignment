@@ -3,8 +3,11 @@ import autoMergeLevel1 from 'redux-persist/lib/stateReconciler/autoMergeLevel2';
 
 import {createStore, combineReducers} from 'redux';
 import {persistReducer} from 'redux-persist';
+import {locationReducer} from './reducers/locationReducer';
 
-const appReducers = combineReducers({});
+const appReducers = combineReducers({
+  locationReducer,
+});
 
 const persistConfig = {
   key: 'root',
