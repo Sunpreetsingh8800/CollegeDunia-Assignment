@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {View, LogBox} from 'react-native';
+import {View, LogBox, StyleSheet} from 'react-native';
 import {Provider} from 'react-redux';
 import {RootStack} from './Routes';
 import NetInfo from '@react-native-community/netinfo';
@@ -48,7 +48,7 @@ class App extends Component {
           value={{
             isInternetReaachable,
           }}>
-          <View style={{flex: 1}}>
+          <View style={styles.container}>
             <RootStack />
           </View>
         </NetworkContext.Provider>
@@ -58,3 +58,9 @@ class App extends Component {
 }
 
 export default App;
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+  },
+});

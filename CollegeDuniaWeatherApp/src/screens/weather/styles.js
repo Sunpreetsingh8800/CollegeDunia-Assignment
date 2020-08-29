@@ -30,6 +30,9 @@ export const styles = StyleSheet.create({
     marginLeft: dynamicSize(30),
     marginRight: dynamicSize(100),
   },
+  retryButtonText: {
+    fontSize: 16,
+  },
   titleText: {
     fontSize: dynamicSize(38),
   },

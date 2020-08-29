@@ -49,7 +49,7 @@ class Weather extends Component {
           <TouchableOpacity
             style={styles.retryText}
             onPress={this.getWeatherData}>
-            <Text style={{fontSize: 16}}>Retry</Text>
+            <Text style={styles.retryButtonText}>Retry</Text>
           </TouchableOpacity>
         </View>
       );
